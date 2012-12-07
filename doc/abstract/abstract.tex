@@ -22,6 +22,8 @@ caw4567@rit.edu, TODO, TODO
 \date{26 November 2012}
 \maketitle
 \begin{abstract}
+
+\begin{comment}
   The abstract should be one or two paragraphs that
   summarize your paper. Abstracts are read independently
   from the rest of the paper so you cannot cite your paper
@@ -35,10 +37,49 @@ part of a formal research paper using the ACM style LaTeX template (see
 myCourses); you will fill in the rest of this report for future phases.
 
 TODO:
-0. find the bibtex citation for the base paper
 1. define the need for the system
 2. define how we attempt to extend past solutions with new solution
-3. define rationale for json/PKI
+3. define rationale for JSON/PKI
+\end{comment}
+
+Data exchange between organizations is becoming a pervasive problem in the computer
+security landscape, particularly in the context of health information systems. With the 
+timely access to accurate data, health practitioners are able to make informed decisions
+about patient treatments. Such data access is particularly important in the cardiovascular domain,
+which, according to the World Health Organization (WHO), is the primary cause of 
+individual fatalities in developed countries. Access to a patient's medical history 
+is critically important in order to successfully diagnose a wide array of cardiovascular problems (CITE \#3/4 from paper).
+
+Standard solutions for secure information exchange, such as the Electronics Data Interchange (EDI),
+have been deployed in clinical settings for several years. However, with the emergence of modern
+web applications and services, the adoption of solutions based on eXtensible Markup Language (XML)
+technologies have risen in popularity. With eXtensible Stylesheet Language Transformations (XSLTs), 
+XML documents containing vital data from a separate organization can be molded to match a different, yet 
+compatible, schema. The interoperability properties of XML have thus given rise to data interchange frameworks
+based on XML solutions in recent years \cite{Jumaa10-XmlExchange}.
+
+JavaScript Object Notation, or JSON, is another increasingly popular data interchange format. While it is
+similar in XML in many regards, its syntactic simplicity makes it a very appealing alternative to XML for
+data exchange (TODO: cite JSON). Since JSON is not a document markup language, it does not have the
+same extensibility of  XML. However, its flat structure enables much easier and more efficient parsing of 
+data, and thus makes it an appealing candidate for addressing the problem of secure data exchange.
+
+SHIFT, a Secure Heterogeneous Information Transfer mechanism for relational databases, is inspired 
+by the mediator design pattern for centralizing and managing pairwise interactions between many 
+subjects using a publish-subscribe enrollment approach. Subjects will register with the SHIFT service
+by providing their own database schema and other pertinent identification information. This will enable
+SHIFT to push and pull data from subject databases using their provided schema. Once registered,
+subjects can push data to other known subjects by transferring data to the SHIFT service. Similarly,
+subjects can query for data from other known subjects by requesting data from the SHIFT service. 
+
+This framework builds upon the model presented in \cite{Jumaa10-XmlExchange} with two very
+important enhancements. Firstly, JSON, rather than XML, 
+is used as the data interchange format between relational databases. Mappings between database schemas, 
+as well as the schemas themselves, can easily be represented using JSON. Secondly, the notion of data
+confidentiality while transmissions are being made is not discussed in \cite{Jumaa10-XmlExchange}. Therefore, 
+we plan on extending the framework to include PKI system for encryption. A CA is used to sign all certificates.
+
+TODO: need two more paragraphs.
   
 \end{abstract}
 
