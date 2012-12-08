@@ -1,5 +1,16 @@
 \begin{thebibliography}{1}
 
+\bibitem{Crockford2006-JSON}
+D.~Crockford.
+\newblock The application/json media type for javascript object notation
+  (json).
+\newblock 2006.
+
+\bibitem{Fayn2010-PersonalHealth}
+J.~Fayn and P.~Rubel.
+\newblock Toward a personal health society in cardiology.
+\newblock {\em Trans. Info. Tech. Biomed.}, 14(2):401--409, Mar. 2010.
+
 \bibitem{Jumaa10-XmlExchange}
 H.~Jumaa, P.~Rubel, and J.~Fayn.
 \newblock An xml-based framework for automating data exchange in healthcare.

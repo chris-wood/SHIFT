@@ -7,6 +7,7 @@
 \usepackage{enumerate}
 \usepackage{balance}
 \usepackage{verbatim}
+\usepackage{enumitem}
 \permission{}
 \CopyrightYear{2012}
 %\crdata{0-00000-00-0/00/00}
@@ -16,31 +17,12 @@
 \numberofauthors{1}
 \author{
 \alignauthor{
-Christopher A. Wood, TODO, TODO \\
-caw4567@rit.edu, TODO, TODO
+Christopher A. Wood \\
+caw4567@rit.edu
 }}
 \date{26 November 2012}
 \maketitle
 \begin{abstract}
-
-\begin{comment}
-  The abstract should be one or two paragraphs that
-  summarize your paper. Abstracts are read independently
-  from the rest of the paper so you cannot cite your paper
-  or other papers in it. Study other abstracts in the papers
-  you are reading to understand what an abstract should
-  really means. Write the abstract in third person.
-  
-  TODO: Submit a 1-page description of your project including your sample database 
-application, and the security features to be explored. This must be the abstract 
-part of a formal research paper using the ACM style LaTeX template (see
-myCourses); you will fill in the rest of this report for future phases.
-
-TODO:
-1. define the need for the system
-2. define how we attempt to extend past solutions with new solution
-3. define rationale for JSON/PKI
-\end{comment}
 
 Data exchange between organizations is becoming a pervasive problem in the computer
 security landscape, particularly in the context of health information systems. With the 
@@ -48,7 +30,8 @@ timely access to accurate data, health practitioners are able to make informed d
 about patient treatments. Such data access is particularly important in the cardiovascular domain,
 which, according to the World Health Organization (WHO), is the primary cause of 
 individual fatalities in developed countries. Access to a patient's medical history 
-is critically important in order to successfully diagnose a wide array of cardiovascular problems (CITE \#3/4 from paper).
+is critically important in order to successfully diagnose a wide array of 
+cardiovascular problems \cite{Fayn2010-PersonalHealth}.
 
 Standard solutions for secure information exchange, such as the Electronics Data Interchange (EDI),
 have been deployed in clinical settings for several years. However, with the emergence of modern
@@ -60,7 +43,7 @@ based on XML solutions in recent years \cite{Jumaa10-XmlExchange}.
 
 JavaScript Object Notation, or JSON, is another increasingly popular data interchange format. While it is
 similar in XML in many regards, its syntactic simplicity makes it a very appealing alternative to XML for
-data exchange (TODO: cite JSON). Since JSON is not a document markup language, it does not have the
+data exchange \cite{Crockford2006-JSON}. Since JSON is not a document markup language, it does not have the
 same extensibility of  XML. However, its flat structure enables much easier and more efficient parsing of 
 data, and thus makes it an appealing candidate for addressing the problem of secure data exchange.
 
@@ -73,14 +56,102 @@ subjects can push data to other known subjects by transferring data to the SHIFT
 subjects can query for data from other known subjects by requesting data from the SHIFT service. 
 
 This framework builds upon the model presented in \cite{Jumaa10-XmlExchange} with two very
-important enhancements. Firstly, JSON, rather than XML, 
-is used as the data interchange format between relational databases. Mappings between database schemas, 
+important enhancements. Firstly, JSON, rather than XML, is used as the data interchange format between 
+relational databases. Mappings between database schemas, 
 as well as the schemas themselves, can easily be represented using JSON. Secondly, the notion of data
 confidentiality while transmissions are being made is not discussed in \cite{Jumaa10-XmlExchange}. Therefore, 
-we plan on extending the framework to include PKI system for encryption. A CA is used to sign all certificates.
+we plan on extending the framework to include a PKI scheme for encrypting data in transit. 
 
-TODO: need two more paragraphs.
-  
+To evaluate SHIFT, we will implement and deploy the service in an environment where two database-driven 
+applications located on separate domains need to exchange sensitive data during normal operation. The
+context of these applications will be a medical environment, with one application representing an outsourced 
+medical laboratory and the other representing a general practitioner information system belonging to a
+different domain. The laboratory application will have the following database schema:
+
+%TODO: put these in a table somewhere...
+\begin{itemize}
+\setlist{nolistsep}
+	\item patient
+	\setlist{nolistsep}
+	\begin{itemize}
+		\item fname, lname, bdate, patientId, orgId % The organizationId = patientId from the general practitioner!
+	\end{itemize}
+	\item test
+	\setlist{nolistsep}
+	\begin{itemize}
+		\item testId, desc, inputs, restrictions
+	\end{itemize}
+	\item result
+	\setlist{nolistsep}
+	\begin{itemize}
+		\item resultId, patientId, testId, outputs, meds
+	\end{itemize}
+	\item medication
+	\setlist{nolistsep}
+	\begin{itemize}
+		\item medId, desc, uid % matches
+	\end{itemize}
+\end{itemize}
+
+In order to track relevant patient information, the general practitioner information system will have 
+the following database schema:
+
+\begin{itemize}
+\setlist{nolistsep}
+	\item patient
+	\begin{itemize}
+		\item fname, lname, bdate, patientId, organizationId % The organizationId = patientId from the general practitioner!
+	\end{itemize}
+	\item history
+	\setlist{nolistsep}
+	\begin{itemize}
+		\item histId, desc, patientId, date, medication
+	\end{itemize}
+	\item visits
+	\setlist{nolistsep}
+	\begin{itemize}
+		\item patientId, date, visitDesc
+	\end{itemize}
+	\setlist{nolistsep}
+	\item medication
+	\begin{itemize}
+		\item medId, desc, uid % matches
+	\end{itemize}
+\end{itemize}
+
+In a general scenario, the general practitioner will need to communicate with the laboratory to retrieve
+test information about patients that may have been entered by other cooperating organizations. In this case,
+the general practitioner would query SHIFT to fetch all of the required data. Conversely, the laboratory may
+need to request patient information from the general practitioner in the event that it cannot be provided
+by cooperating organizations, and would interface with SHIFT to acquire this data. 
+
+The laboratory application will only have two designated roles: a lab assistant and general manager. The 
+lab manager is able to select all fields from the patient except the \emph{organizationId} and all 
+fields from the test and result tables, but is only able to read fields from the medication table. Similarly, the
+general practitioner application will have two roles: the general practitioner and patient. The general 
+practitioner is able to select all fields from all tables, and the patient is able to read all data from all
+tables with the exception of the \emph{patientId} field from the patient table.
+
+The laboratory application is to be implemented as a console-based program with text-based input.
+This will enable test automation on this half of the environment. Flask, a Python-based micro framework for
+web application development, will serve as the endpoint to the SHIFT service for the laboratory application. 
+Conversely, the general practitioner informational system will be implemented as a web-based application 
+built using the Play! web framework. This will be done to expose more attack vectors to the underlying
+databases, and as a result increase the comprehensiveness of our security features. 
+
+Aside from the security aspects of the SHIFT service used to transfer data between these two applications, 
+we will investigate the following security features for each individual database application:
+\begin{itemize}
+	\item Database authentication and password security policies. These features will enforce
+	pre-defined access policies for the underlying databases that store patient-sensitive information.
+	\item Application coding mitigation to prevent SQL injections and buffer overflows. These features
+	will prevent common web-based attacks from threatening the integrity of the database state and contents.
+	\item Database user role privilege management. This feature will ensure that database access is enforced
+	through privileged views designated to each role. 
+	\item Encryption for data in transit between the application and database servers. This feature will prevent against
+	wiretapping attacks used to reconstruct data sent between the applications and database servers.
+\end{itemize}  
+
 \end{abstract}
 
 \begin{comment}
@@ -113,11 +184,3 @@ Issue 4 &  40\% & Duh?\\ \hline
 % to resolve all references
 \balance
 \end{document}
-
-
-
-
-
-
-
-
