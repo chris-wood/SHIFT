@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  8 DEC 2012 01:22
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  8 DEC 2012 01:27
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**abstract.tex
-(./abstract.tex
+**shift-abstract.tex
+(./shift-abstract.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
@@ -233,8 +233,8 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box30
 \enitdp@description=\count109
 )
-(./abstract.aux)
-\openout1 = `abstract.aux'.
+(./shift-abstract.aux)
+\openout1 = `shift-abstract.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
@@ -342,30 +342,30 @@ Overfull \hbox (5.19873pt too wide) in paragraph at lines 58--64
 
 
 ]
-(./abstract.bbl)
+(./shift-abstract.bbl)
 
 Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
 
-[2] (./abstract.aux) ) 
+[2] (./shift-abstract.aux) ) 
 Here is how much of TeX's memory you used:
  3229 strings out of 493488
- 42652 string characters out of 3141326
+ 42718 string characters out of 3141326
  104808 words of memory out of 3000000
  6449 multiletter control sequences out of 15000+200000
  47239 words of font info for 64 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,11n,26p,449b,402s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/
-8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9
-.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pf
-b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/loc
-al/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/t
-exmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on abstract.pdf (2 pages, 89555 bytes).
+ 41i,11n,26p,455b,402s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips
+/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+9.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.
+pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loca
+l/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on shift-abstract.pdf (2 pages, 89553 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  31 compressed objects within 1 object stream

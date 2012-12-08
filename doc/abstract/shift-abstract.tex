@@ -119,7 +119,7 @@ the following database schema:
 	\end{itemize}
 \end{itemize}
 
-In a general scenario, the general practitioner will need to communicate with the laboratory to retrieve
+In a typical scenario, the general practitioner will need to communicate with the laboratory to retrieve
 test information about patients that may have been entered by other cooperating organizations. In this case,
 the general practitioner would query SHIFT to fetch all of the required data. Conversely, the laboratory may
 need to request patient information from the general practitioner in the event that it cannot be provided
@@ -137,7 +137,7 @@ This will enable test automation on this half of the environment. Flask, a Pytho
 web application development, will serve as the endpoint to the SHIFT service for the laboratory application. 
 Conversely, the general practitioner informational system will be implemented as a web-based application 
 built using the Play! web framework. This will be done to expose more attack vectors to the underlying
-databases, and as a result increase the comprehensiveness of our security features. 
+databases, and as a result, increase the comprehensiveness of our security features. 
 
 Aside from the security aspects of the SHIFT service used to transfer data between these two applications, 
 we will investigate the following security features for each individual database application:

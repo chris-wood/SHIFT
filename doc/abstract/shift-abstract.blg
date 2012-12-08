@@ -1,12 +1,12 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: abstract.aux
+The top-level auxiliary file: shift-abstract.aux
 The style file: abbrv.bst
 Database file #1: ../shift.bib
 Warning--empty journal in Crockford2006-JSON
 You've used 3 entries,
             2118 wiz_defined-function locations,
-            519 strings with 4278 characters,
+            519 strings with 4290 characters,
 and the built_in function-call counts, 1065 in all, are:
 = -- 104
 > -- 38
